@@ -6,9 +6,9 @@ class TestPriorityQueue(unittest.TestCase):
   def test_priority_queue_push_pop(self):
     pq = PriorityQueue()
 
-    pq.push(self, "Task 1", 3)
-    pq.push(self, "Task 2", 1)
-    pq.push(self, "Task 3", 2)
+    pq.push("Task 1", 3)
+    pq.push("Task 2", 1)
+    pq.push("Task 3", 2)
 
     self.assertEqual(pq.pop(), "Task 2")
     self.assertEqual(pq.pop(), "Task 3")
