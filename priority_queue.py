@@ -10,12 +10,12 @@ class PriorityQueue:
   def pop(self):
     if len(self.heap) > 1:
       self._swap(0, len(self.heap) - 1)
-      priority, item = self.heap.pop()
+      item = self.heap.pop()
       self._sift_down(0)
-      return item
+      return item[1] # (priority, item) 형태로 반환하던 상태 > item만 반환
     elif len(self.heap) == 1:
-      priority, item = self.heap.pop()
-      return item
+      item = self.heap.pop()
+      return item[1] # 동일
     else:
       return None
 
@@ -35,11 +35,11 @@ class PriorityQueue:
       smallest = index
 
       if left_child_index < len(self.heap) and \
-        self.heap[left_child_index][0] > self.heap[smallest][0]:
+        self.heap[left_child_index][0] < self.heap[smallest][0]: # 부등호 방향 변경
         smallest = left_child_index
 
       if right_child_index < len(self.heap) and \
-        self.heap[right_child_index][0] > self.heap[smallest][0]:
+        self.heap[right_child_index][0] < self.heap[smallest][0]: # 동일
         smallest = right_child_index
 
       if smallest != index:
