@@ -12,16 +12,16 @@ class PriorityQueue:
       self._swap(0, len(self.heap) - 1)
       item = self.heap.pop()
       self._sift_down(0)
-      return item[1]
+      return item[1] # (priority, item) 형태로 반환하던 상태 > item만 반환
     elif len(self.heap) == 1:
       item = self.heap.pop()
-      return item[1]
+      return item[1] # 동일
     else:
       return None
 
   def _sift_up(self, index):
     while index > 0:
-      parent_index = (index - 1) // 2
+      parent_index = (index - 1) % 2 # 몫 연산 > 나머지 연산
       if self.heap[parent_index][0] > self.heap[index][0]:
         self._swap(parent_index, index)
         index = parent_index
