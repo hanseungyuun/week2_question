@@ -41,4 +41,4 @@ jobs:
         pylint *.py
     - name: Test with pytest
       run: |
-        pytest test.py
+        pytest test.py # 테스트 파일 명시
